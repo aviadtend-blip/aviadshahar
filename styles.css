@@ -206,127 +206,130 @@ img {
 .hero-glow {
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 350px;
   z-index: 0;
   pointer-events: none;
 }
 
-.hero-glow-blur {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 12rem;
-  background: transparent;
-  opacity: 0.1;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  z-index: 5;
-}
-
+/* Main soft glow orb */
 .hero-glow-main {
   position: absolute;
-  top: -30%;
-  width: 28rem;
-  height: 9rem;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 180px;
   border-radius: 50%;
-  background: rgba(26, 26, 46, 0.35);
-  opacity: 0.8;
-  filter: blur(48px);
-  z-index: 5;
+  background: rgba(26, 26, 46, 0.18);
+  filter: blur(60px);
   animation: glowPulse 4s ease-in-out infinite alternate;
 }
 
+/* Bright center lamp */
 .hero-glow-lamp {
   position: absolute;
-  top: -20%;
-  width: 8rem;
-  height: 9rem;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  background: rgba(26, 26, 46, 0.35);
-  filter: blur(32px);
-  z-index: 3;
+  background: rgba(26, 26, 46, 0.25);
+  filter: blur(40px);
   animation: lampExpand 0.8s ease-in-out 0.3s forwards;
 }
 
+/* Horizontal light line */
 .hero-glow-line {
   position: absolute;
-  top: 10%;
-  width: 15rem;
+  top: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
   height: 2px;
-  background: rgba(26, 26, 46, 0.4);
-  z-index: 5;
+  background: linear-gradient(90deg, transparent, rgba(26, 26, 46, 0.3), transparent);
   animation: lineExpand 0.8s ease-in-out 0.3s forwards;
 }
 
+/* Light cone containers */
 .hero-glow-cone {
   position: absolute;
   top: 0;
-  height: 14rem;
-  width: 15rem;
+  height: 280px;
+  width: 0;
   overflow: hidden;
   animation: coneExpand 0.8s ease-in-out 0.3s forwards;
-  opacity: 0.5;
+  opacity: 0;
 }
 
 .hero-glow-cone-left {
   right: 50%;
-  background: conic-gradient(from 70deg at center top, rgba(26, 26, 46, 0.35), transparent 40%);
+  background: conic-gradient(from 70deg at 100% 0%, rgba(26, 26, 46, 0.12), transparent 40%);
 }
 
 .hero-glow-cone-right {
   left: 50%;
-  background: conic-gradient(from 250deg at center top, transparent 60%, rgba(26, 26, 46, 0.35));
+  background: conic-gradient(from 250deg at 0% 0%, transparent 60%, rgba(26, 26, 46, 0.12));
 }
 
+/* Fade-out masks */
 .hero-cone-mask-bottom {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 10rem;
-  background: var(--bg);
+  height: 140px;
+  background: linear-gradient(to top, var(--bg), transparent);
   z-index: 2;
-  mask-image: linear-gradient(to top, white, transparent);
-  -webkit-mask-image: linear-gradient(to top, white, transparent);
 }
 
 .hero-cone-mask-side {
   position: absolute;
   bottom: 0;
-  width: 10rem;
+  width: 120px;
   height: 100%;
-  background: var(--bg);
   z-index: 2;
-  mask-image: linear-gradient(to right, white, transparent);
-  -webkit-mask-image: linear-gradient(to right, white, transparent);
 }
 
 .hero-glow-cone-left .hero-cone-mask-side {
   left: 0;
+  background: linear-gradient(to right, var(--bg), transparent);
 }
 
 .hero-glow-cone-right .hero-cone-mask-side {
   right: 0;
-  mask-image: linear-gradient(to left, white, transparent);
-  -webkit-mask-image: linear-gradient(to left, white, transparent);
+  background: linear-gradient(to left, var(--bg), transparent);
+}
+
+/* Blur overlay at very top */
+.hero-glow-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 5;
+  opacity: 0.5;
 }
 
 @keyframes lampExpand {
-  to { width: 16rem; }
+  to { width: 220px; }
 }
 
 @keyframes lineExpand {
-  to { width: 30rem; }
+  to { width: 600px; }
 }
 
 @keyframes coneExpand {
-  to { width: 30rem; opacity: 1; }
+  to { width: 450px; opacity: 1; }
 }
 
 @keyframes glowPulse {
-  0% { opacity: 0.6; }
+  0% { opacity: 0.7; }
   100% { opacity: 1; }
 }
 
