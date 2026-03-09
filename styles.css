@@ -235,6 +235,10 @@ img {
   font-size: 0.9rem;
 }
 
+.shimmer-btn--nav .shimmer-btn__label {
+  color: #fff;
+}
+
 /* Large variant */
 .shimmer-btn--lg {
   padding: 1rem 2.5rem;
