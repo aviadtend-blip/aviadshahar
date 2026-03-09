@@ -197,6 +197,168 @@ img {
   display: flex;
   align-items: center;
   padding: 120px 0 80px;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* --- Lamp glow effect (adapted from React component) --- */
+.hero-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-glow-blur {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 12rem;
+  background: transparent;
+  opacity: 0.1;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 5;
+}
+
+.hero-glow-main {
+  position: absolute;
+  top: -30%;
+  width: 28rem;
+  height: 9rem;
+  border-radius: 50%;
+  background: rgba(26, 26, 46, 0.35);
+  opacity: 0.8;
+  filter: blur(48px);
+  z-index: 5;
+  animation: glowPulse 4s ease-in-out infinite alternate;
+}
+
+.hero-glow-lamp {
+  position: absolute;
+  top: -20%;
+  width: 8rem;
+  height: 9rem;
+  border-radius: 50%;
+  background: rgba(26, 26, 46, 0.35);
+  filter: blur(32px);
+  z-index: 3;
+  animation: lampExpand 0.8s ease-in-out 0.3s forwards;
+}
+
+.hero-glow-line {
+  position: absolute;
+  top: 10%;
+  width: 15rem;
+  height: 2px;
+  background: rgba(26, 26, 46, 0.4);
+  z-index: 5;
+  animation: lineExpand 0.8s ease-in-out 0.3s forwards;
+}
+
+.hero-glow-cone {
+  position: absolute;
+  top: 0;
+  height: 14rem;
+  width: 15rem;
+  overflow: hidden;
+  animation: coneExpand 0.8s ease-in-out 0.3s forwards;
+  opacity: 0.5;
+}
+
+.hero-glow-cone-left {
+  right: 50%;
+  background: conic-gradient(from 70deg at center top, rgba(26, 26, 46, 0.35), transparent 40%);
+}
+
+.hero-glow-cone-right {
+  left: 50%;
+  background: conic-gradient(from 250deg at center top, transparent 60%, rgba(26, 26, 46, 0.35));
+}
+
+.hero-cone-mask-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 10rem;
+  background: var(--bg);
+  z-index: 2;
+  mask-image: linear-gradient(to top, white, transparent);
+  -webkit-mask-image: linear-gradient(to top, white, transparent);
+}
+
+.hero-cone-mask-side {
+  position: absolute;
+  bottom: 0;
+  width: 10rem;
+  height: 100%;
+  background: var(--bg);
+  z-index: 2;
+  mask-image: linear-gradient(to right, white, transparent);
+  -webkit-mask-image: linear-gradient(to right, white, transparent);
+}
+
+.hero-glow-cone-left .hero-cone-mask-side {
+  left: 0;
+}
+
+.hero-glow-cone-right .hero-cone-mask-side {
+  right: 0;
+  mask-image: linear-gradient(to left, white, transparent);
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+}
+
+@keyframes lampExpand {
+  to { width: 16rem; }
+}
+
+@keyframes lineExpand {
+  to { width: 30rem; }
+}
+
+@keyframes coneExpand {
+  to { width: 30rem; opacity: 1; }
+}
+
+@keyframes glowPulse {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+/* --- Hero content layout --- */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-photo {
+  flex-shrink: 0;
+}
+
+.hero-photo-img {
+  width: 300px;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+  filter: grayscale(100%);
+  transition: filter 0.4s ease;
+}
+
+.hero-photo-img:hover {
+  filter: grayscale(0%);
 }
 
 .hero-headline {
@@ -214,6 +376,25 @@ img {
   max-width: 600px;
   margin-bottom: 40px;
   line-height: 1.8;
+}
+
+/* --- About photo --- */
+.about-layout {
+  margin-bottom: 32px;
+}
+
+.about-photo {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  filter: grayscale(100%);
+  transition: filter 0.4s ease;
+}
+
+.about-photo:hover {
+  filter: grayscale(0%);
 }
 
 /* ==========================================================================
@@ -502,6 +683,22 @@ img {
   .hero {
     min-height: auto;
     padding: 140px 0 72px;
+  }
+
+  .hero-content {
+    flex-direction: column-reverse;
+    gap: 32px;
+    text-align: center;
+  }
+
+  .hero-photo-img {
+    width: 220px;
+    height: 280px;
+  }
+
+  .hero-sub {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
