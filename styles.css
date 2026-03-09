@@ -106,14 +106,14 @@ img {
   gap: 32px;
 }
 
-.nav-links a {
+.nav-links a:not(.shimmer-btn) {
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--muted);
   transition: color 0.2s ease;
 }
 
-.nav-links a:hover {
+.nav-links a:not(.shimmer-btn):hover {
   color: var(--text);
 }
 
@@ -233,6 +233,8 @@ img {
 .shimmer-btn--nav {
   padding: 10px 24px;
   font-size: 0.9rem;
+  isolation: isolate;
+  will-change: transform;
 }
 
 .shimmer-btn--nav .shimmer-btn__label {
@@ -370,8 +372,8 @@ img {
   width: 500px;
   height: 180px;
   border-radius: 50%;
-  background: rgba(26, 26, 46, 0.18);
-  filter: blur(60px);
+  background: radial-gradient(ellipse, rgba(56, 140, 220, 0.3), rgba(120, 80, 220, 0.15), transparent 70%);
+  filter: blur(50px);
   animation: glowPulse 4s ease-in-out infinite alternate;
 }
 
@@ -384,8 +386,8 @@ img {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: rgba(26, 26, 46, 0.25);
-  filter: blur(40px);
+  background: radial-gradient(circle, rgba(100, 160, 255, 0.5), rgba(140, 100, 240, 0.3), transparent 70%);
+  filter: blur(35px);
   animation: lampExpand 0.8s ease-in-out 0.3s forwards;
 }
 
@@ -397,7 +399,7 @@ img {
   transform: translateX(-50%);
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(26, 26, 46, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(100, 160, 255, 0.6), rgba(140, 100, 240, 0.5), rgba(100, 160, 255, 0.6), transparent);
   animation: lineExpand 0.8s ease-in-out 0.3s forwards;
 }
 
@@ -414,12 +416,12 @@ img {
 
 .hero-glow-cone-left {
   right: 50%;
-  background: conic-gradient(from 70deg at 100% 0%, rgba(26, 26, 46, 0.12), transparent 40%);
+  background: conic-gradient(from 70deg at 100% 0%, rgba(100, 160, 255, 0.18), rgba(140, 100, 240, 0.08), transparent 40%);
 }
 
 .hero-glow-cone-right {
   left: 50%;
-  background: conic-gradient(from 250deg at 0% 0%, transparent 60%, rgba(26, 26, 46, 0.12));
+  background: conic-gradient(from 250deg at 0% 0%, transparent 60%, rgba(140, 100, 240, 0.08), rgba(100, 160, 255, 0.18));
 }
 
 /* Fade-out masks */
